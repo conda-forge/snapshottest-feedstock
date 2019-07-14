@@ -1,5 +1,5 @@
 {% set name = "snapshottest" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 215c28eb397fd171a25a0e7d8b7b82d39619bf38d0e44de97c38842e8495b40c
+  sha256: 2cc7157e77674ea8ebeb2351466ff50cd4b5ad8e213adc06df9c16a75ab5bafc
 
 build:
   noarch: python
