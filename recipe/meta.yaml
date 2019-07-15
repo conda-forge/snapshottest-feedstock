@@ -1,5 +1,5 @@
 {% set name = "snapshottest" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 215c28eb397fd171a25a0e7d8b7b82d39619bf38d0e44de97c38842e8495b40c
+  sha256: 2cc7157e77674ea8ebeb2351466ff50cd4b5ad8e213adc06df9c16a75ab5bafc
 
 build:
   noarch: python
@@ -19,6 +19,7 @@ requirements:
     - pip
     - python
   run:
+    - fastdiff >=0.1.4,<1
     - python
     - six >=1.10.0
     - termcolor
@@ -31,9 +32,20 @@ test:
 
   imports:
     - snapshottest
+    - snapshottest.diff
     - snapshottest.django
+    - snapshottest.error
+    - snapshottest.file
+    - snapshottest.formatter
+    - snapshottest.formatters
+    - snapshottest.generic_repr
+    - snapshottest.module
     - snapshottest.nose
     - snapshottest.pytest
+    - snapshottest.reporting
+    - snapshottest.snapshot
+    - snapshottest.sorted_dict
+    - snapshottest.unittest
 
 about:
   home: https://github.com/syrusakbary/snapshottest
