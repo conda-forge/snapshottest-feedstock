@@ -29,16 +29,23 @@ test:
     - django
     - nose
     - pytest
-    - pytest-cov
 
   imports:
     - snapshottest
+    - snapshottest.diff
     - snapshottest.django
+    - snapshottest.error
+    - snapshottest.file
+    - snapshottest.formatter
+    - snapshottest.formatters
+    - snapshottest.generic_repr
+    - snapshottest.module
     - snapshottest.nose
     - snapshottest.pytest
-
-  commands:
-    - pytest --cov snapshottest
+    - snapshottest.reporting
+    - snapshottest.snapshot
+    - snapshottest.sorted_dict
+    - snapshottest.unittest
 
 about:
   home: https://github.com/syrusakbary/snapshottest
