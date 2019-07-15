@@ -19,6 +19,7 @@ requirements:
     - pip
     - python
   run:
+    - fastdiff >=0.1.4,<1
     - python
     - six >=1.10.0
     - termcolor
@@ -28,12 +29,16 @@ test:
     - django
     - nose
     - pytest
+    - pytest-cov
 
   imports:
     - snapshottest
     - snapshottest.django
     - snapshottest.nose
     - snapshottest.pytest
+
+  commands:
+    - pytest --cov snapshottest
 
 about:
   home: https://github.com/syrusakbary/snapshottest
