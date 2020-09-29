@@ -28,7 +28,10 @@ test:
   requires:
     - django
     - nose
-    - pytest
+    - pip
+a    - pytest
+  commands:
+    - python -m pip check
 
   imports:
     - snapshottest
