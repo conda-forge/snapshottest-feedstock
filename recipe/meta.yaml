@@ -29,7 +29,7 @@ test:
     - django
     - nose
     - pip
-a    - pytest
+    - pytest
   commands:
     - python -m pip check
 
