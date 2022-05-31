@@ -17,10 +17,10 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
     - fastdiff >=0.1.4,<1
-    - python
+    - python >=3.6
     - six >=1.10.0
     - termcolor
 
