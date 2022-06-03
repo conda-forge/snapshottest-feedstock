@@ -1,5 +1,5 @@
 {% set name = "snapshottest" %}
-{% set version = "0.5.1" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name }}
@@ -7,20 +7,20 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2cc7157e77674ea8ebeb2351466ff50cd4b5ad8e213adc06df9c16a75ab5bafc
+  sha256: bbcaf81d92d8e330042e5c928e13d9f035e99e91b314fe55fda949c2f17b653c
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
     - fastdiff >=0.1.4,<1
-    - python
+    - python >=3.6
     - six >=1.10.0
     - termcolor
 
@@ -28,7 +28,10 @@ test:
   requires:
     - django
     - nose
+    - pip
     - pytest
+  commands:
+    - python -m pip check
 
   imports:
     - snapshottest
@@ -52,7 +55,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Snapshot Testing utils for Python'
+  summary: Snapshot Testing utils for Python
 
   # The remaining entries in this section are optional, but recommended
   description: |
