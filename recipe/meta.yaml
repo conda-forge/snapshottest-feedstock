@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: bbcaf81d92d8e330042e5c928e13d9f035e99e91b314fe55fda949c2f17b653c
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - fastdiff >=0.1.4,<1
-    - python >=3.6
+    - python >={{ python_min }}
     - six >=1.10.0
     - termcolor
 
@@ -30,6 +30,7 @@ test:
     - nose
     - pip
     - pytest
+    - python {{ python_min }}
   commands:
     - python -m pip check
 
