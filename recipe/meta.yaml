@@ -1,26 +1,27 @@
-{% set name = "snapshottest" %}
 {% set version = "0.6.0" %}
 
 package:
-  name: {{ name }}
+  name: snapshottest
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/s/snapshottest/snapshottest-{{ version }}.tar.gz
   sha256: bbcaf81d92d8e330042e5c928e13d9f035e99e91b314fe55fda949c2f17b653c
 
 build:
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  number: 1
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
+    - setuptools
   run:
     - fastdiff >=0.1.4,<1
-    - python >=3.6
+    - python >={{ python_min }}
     - six >=1.10.0
     - termcolor
 
@@ -30,9 +31,7 @@ test:
     - nose
     - pip
     - pytest
-  commands:
-    - python -m pip check
-
+    - python {{ python_min }}
   imports:
     - snapshottest
     - snapshottest.diff
@@ -49,6 +48,8 @@ test:
     - snapshottest.snapshot
     - snapshottest.sorted_dict
     - snapshottest.unittest
+  commands:
+    - pip check
 
 about:
   home: https://github.com/syrusakbary/snapshottest
@@ -56,8 +57,6 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Snapshot Testing utils for Python
-
-  # The remaining entries in this section are optional, but recommended
   description: |
     Snapshot testing is a way to test your APIs without writing actual test cases.
 
